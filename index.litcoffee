@@ -20,7 +20,7 @@ Initailization
 
 Our only external dependency is `q` for promises.
 
-	q = require 'q'
+    q = require 'q'
 
 buffie
 ------
@@ -36,34 +36,34 @@ If you'd like to process each chunk, just listen to the promise's `progress` eve
 Once the response is complete a JSON object representing it's data is built and passed to the
 `then` event.
 
-	buffie = (res) ->
-		data    = [ ]
-		dataLen = 0
-		deferred = q.defer()
+    buffie = (res) ->
+      data    = [ ]
+      dataLen = 0
+      deferred = q.defer()
 
-		if res.statusCode > 200
-			setTimeout () ->
-				deferred.reject httpStatus: res.statusCode
-			, 0
-		else
-			res.on 'data', (chunk) ->
-				data.push chunk
-				dataLen += chunk.length
-				deferred.notify chunk
+      if res.statusCode > 200
+        setTimeout () ->
+          deferred.reject httpStatus: res.statusCode
+        , 0
+      else
+        res.on 'data', (chunk) ->
+          data.push chunk
+          dataLen += chunk.length
+          deferred.notify chunk
 
-			res.on 'end', () ->
-				buf = new Buffer dataLen
-				pos = 0
+        res.on 'end', () ->
+          buf = new Buffer dataLen
+          pos = 0
 
-				for d, i in data
-					data[i].copy buf, pos
-					pos += data[i].length
-				
-				deferred.resolve JSON.parse buf.toString 'utf-8'
+          for d, i in data
+            data[i].copy buf, pos
+            pos += data[i].length
+          
+          deferred.resolve JSON.parse buf.toString 'utf-8'
 
-		deferred.promise
+      deferred.promise
 
 Public interface
 ----------------
 
-	module.exports = buffie
+    module.exports = buffie
