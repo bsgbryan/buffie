@@ -1,0 +1,33 @@
+{
+  "name": "buffie",
+  "version": "1.0.0",
+  "description": "A module to wrap http response buffering in a promise for fun and profit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bsgbryan/buffie.git"
+  },
+  "keywords": [
+    "http",
+    "response",
+    "buffering",
+    "promise",
+    "fun",
+    "profit"
+  ],
+  "author": "Bryan Maynard <bsgbryan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bsgbryan/buffie/issues"
+  },
+  "homepage": "https://github.com/bsgbryan/buffie",
+  "dependencies": {
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "docco": "^0.6.3"
+  }
+}
