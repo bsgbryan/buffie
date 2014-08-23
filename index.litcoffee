@@ -9,8 +9,11 @@ But, it's been written and it's been helpful so far - so here we go!
 
 `buffie` simply wraps the generation of an http response in a promise. This means
 you don't have to concern yourself with building up a `Buffer`, populating it, and
-parsing the result to JSON. If you'd like, you can listen for the `progress` events
-and handle each chunk however you wish.
+parsing the result to JSON - especially helpful if you're only interested in dealing
+with the response once it's complete.
+
+If you'd like, you can listen for the `progress` events and handle each chunk however
+you wish.
 
 Initailization
 --------------
@@ -23,7 +26,7 @@ buffie
 ------
 
 `buffie` takes an http response object, listens to it's `data` and `end` events, and
-returns a JSON object once hte response has completed.
+returns a JSON object once the response has completed.
 
 If the http response code is anything other than `200` the promise is rejected.
 
