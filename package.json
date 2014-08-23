@@ -1,6 +1,6 @@
 {
   "name": "buffie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module to wrap http response buffering in a promise for fun and profit",
   "main": "index.js",
   "scripts": {
