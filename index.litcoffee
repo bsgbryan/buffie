@@ -36,14 +36,14 @@ If you'd like to process each chunk, just listen to the promise's `progress` eve
 Once the response is complete a JSON object representing it's data is built and passed to the
 `then` event.
 
-    buffie = (res) ->
+    buffie = (res, mime_type = 'application/json') ->
       data    = [ ]
       dataLen = 0
       deferred = q.defer()
 
       if res.statusCode > 200
         setTimeout () ->
-          deferred.reject httpStatus: res.statusCode
+          deferred.reject res.statusCode
         , 0
       else
         res.on 'data', (chunk) ->
@@ -58,8 +58,13 @@ Once the response is complete a JSON object representing it's data is built and 
           for d, i in data
             data[i].copy buf, pos
             pos += data[i].length
-          
-          deferred.resolve JSON.parse buf.toString 'utf-8'
+
+          if mime_type == 'application/json'
+            out = JSON.parse buf.toString 'utf-8'
+          else
+            out = buf.toString 'utf-8'
+
+          deferred.resolve out
 
       deferred.promise
 
