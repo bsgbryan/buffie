@@ -12,8 +12,10 @@
     data = [];
     dataLen = 0;
     deferred = q.defer();
+    console.log('STATUS CODE', res.statusCode);
     if (res.statusCode > 200) {
       setTimeout(function() {
+        console.log("REJECTED STATUS CODE", res.statusCode);
         return deferred.reject(res.statusCode);
       }, 0);
     } else {
