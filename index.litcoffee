@@ -40,10 +40,9 @@ Once the response is complete a JSON object representing it's data is built and 
       data    = [ ]
       dataLen = 0
       deferred = q.defer()
-      console.log 'STATUS CODE', res.statusCode
+
       if res.statusCode > 200
         setTimeout () ->
-          console.log "REJECTED STATUS CODE", res.statusCode
           deferred.reject res.statusCode
         , 0
       else
